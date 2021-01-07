@@ -42,7 +42,7 @@ class DataStorage {
 
     // returns ids of all playlists
     getAllPlaylists(){
-        return this.playlists.keys()
+        return Object.keys(this.playlists);
     }
 
     // returns playlist metadata (no songs)
@@ -63,7 +63,7 @@ class DataStorage {
 
     // return song metadata
     getSongDetail(id){
-       let song = this.songs[id]
+        let song = this.songs[id]
         return {
             id: id,
             artist: song.artist,
@@ -74,7 +74,7 @@ class DataStorage {
     // if exists replace current song if true, add it another time otherwise
     // returns true if something was created
     addSongToPlaylist(playlistId, trackId, replace){
-        if (replace || !(trackId in this.playlists[playlistId].songs)){
+        if (replace || !this.playlists[playlistId].songs.contains(trackId)){
             this.playlists[playlistId].songs.push(trackId)
 
             fetch(`https://itunes.apple.com/lookup?id=${trackId}`).then(json => json.json().then(res => {

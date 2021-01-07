@@ -3,7 +3,7 @@ var router = express.Router();
 
 // ... mounts to /playlists/
 router.get('/', function(req, res, next) {
-  let playlists = req.dataStorage.getPlaylists()
+  let playlists = req.dataStorage.getAllPlaylists()
   res.send(playlists)
 });
 
