@@ -21,7 +21,9 @@ export default class App extends Component {
 
         console.log('deleting '+index);
         if (index !== -1) {
-            let contactsArrayNew = this.state.contacts.splice(index, 1)
+            let contacts = this.state.contacts;
+            contacts.splice(index, 1)
+            let contactsArrayNew = contacts;
 
             // TODO A new contacts array, with the deleted contact being removed, is computed above. But how do we make this change being rendered? Code for b) goes here
 
